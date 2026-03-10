@@ -7,21 +7,19 @@
 
 int main(void)
 {
-	/**
-	 * TODO: Is the declaration of the s variable correct considering that
-	 * we're calling the delete_first function on it? Why? Modify if necessary.
-	 */
-	char *s = "She sells seashells by the seashore";
-	char *pattern = "se";
+    /**
+     * TODO: Is the declaration of the s variable correct considering that
+     * we're calling the delete_first function on it? Why? Modify if necessary.
+     */
 
-	(void) s;
-	(void) pattern;
+    // The declaration 'char *s = "(some string)"' will segfault since
+    // delete_first will try to modify a string literal, which is in RODATA
+    char s[] = "She sells seashells by the seashore";
+    char *pattern = "se";
 
-	/* Uncomment this line after implementing the delete_first function */
+    char *res = delete_first(s, pattern);
 
-	char *res = delete_first(s, pattern);
+    res ? puts(res) : puts("Implement function!");
 
-	res ? puts(res) : puts("Implement function!");
-
-	return 0;
+    return 0;
 }
