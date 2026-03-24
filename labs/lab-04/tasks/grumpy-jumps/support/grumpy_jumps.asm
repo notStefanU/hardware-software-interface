@@ -4,7 +4,7 @@
 
 section .data
     wrong: db 'Not today, son.',0
-    right: db 'Well done!',0
+    right: db 'Well done!', 0
 
 section .text
     global main
@@ -14,8 +14,8 @@ main:
     push rbp
     mov rbp, rsp
 
-    mov rax, 0xdeadc0de         ; TODO3.1: modify rax register
-    mov rbx, 0x1337ca5e         ; TODO3.1: modify rbx register
+    mov rax, 0x2         ; TODO3.1: modify rax register
+    mov rbx, 0x3         ; TODO3.1: modify rbx register
     mov rcx, 0x5                ; hardcoded; DO NOT change
     cmp rax, rbx
     jns bad
