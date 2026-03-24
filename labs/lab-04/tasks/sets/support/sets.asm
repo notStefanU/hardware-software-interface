@@ -21,19 +21,20 @@ main:
     PRINTF64 `%u\n\x0`, rbx ; print the second set
 
     ; TODO1: reunion of the two sets
-
+    or rax, rbx
+    mov rax, QWORD [FIRST_SET]
 
     ; TODO2: adding an element to a set
-
-
+    or rax, 256
+    
     ; TODO3: intersection of the two sets
-
+    and rax, rbx
 
     ; TODO4: the complement of a set
-
+    not rax
 
     ; TODO5: removal of an element from a set
-
+    
 
     ; TODO6: difference of two sets
 
