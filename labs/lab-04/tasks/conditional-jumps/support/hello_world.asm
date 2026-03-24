@@ -5,7 +5,8 @@
 section .data
     myString: db "Hello, World!", 0
     N: dq 6                         ; N = 6
-
+    myOtherString: db "Goodbye, World!", 0
+    
 section .text
     global main
     extern printf
@@ -20,7 +21,7 @@ main:
     mov rax, 2
     mov r8, 1
     cmp rax, r8
-    je print                        ; TODO1: rax > r8?
+    jg print                        ; TODO1: rax > r8?
     xor rax, rax
 
     leave
@@ -28,9 +29,10 @@ main:
 
 print:
     PRINTF64 `%s\n\x0`, myString
-                                    ; TODO2.2: print "Hello, World!" N times
-                                    ; TODO2.1: print "Goodbye, World!"
-    xor rax, rax
+    sub dword [N], 1                                 ; TODO2.2: print "Hello, World!" N times
+    jnz print
+    PRINTF64 `%s\n\x0`, myOtherString
+   xor rax, rax
 
     leave
     ret
