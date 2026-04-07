@@ -37,6 +37,9 @@ main:
     mov rbp, rsp
 
     ; TODO: Update name, surname, birth_year, gender and age such that:
+    mov word [sample_student + birth_year], 1993
+    mov byte [sample_student + age], 22
+    mov byte [sample_student + group + 2], '3'
     ; birth_year is 1993
     ; age is 22
     ; group is '323CA'
