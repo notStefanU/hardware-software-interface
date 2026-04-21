@@ -15,13 +15,20 @@ push_nums:
     push rcx
     loop push_nums
 
-    push 0
+    sub rsp, 8
+    mov qword [rsp], 0
+
     mov rax, "handsome"
-    push rax
+    sub rsp, 8
+    mov [rsp], rax
+
     mov rax, "is very "
-    push rax
+    sub rsp, 8
+    mov [rsp], rax
+
     mov rax, "Anthony "
-    push rax
+    sub rsp, 8
+    mov [rsp], rax
 
     lea rsi, [rsp]
     PRINTF64 `%s\n\x0`, rsi
@@ -29,8 +36,14 @@ push_nums:
     ; TODO 2: print the stack in "address: value" format in the range of [RSP:RBP]
     ; use PRINTF64 macro - see format above
 
-    ; TODO 3: print the string
+print_addy:
+    PRINTF64 `%p: 0x%x \n\x0`, rsp, qword [rsp]
+    add rsp, 8
+    cmp rsp, rbp
+    jl print_addy
 
+    ; TODO 3: print the string
+    PRINTF64 `%s\n\x0`, rsi
     ; TODO 4: print the array on the stack, element by element.
 
     ; restore the previous value of the rbp (Base Pointer)
