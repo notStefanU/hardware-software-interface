@@ -30,17 +30,34 @@ main:
 
     ; Print all three values (int_x, char_y, string_s) from sample_obj.
     ; Hint: use "lea reg, [base + offset]" to save the result of
-    ; "base + offset" into register "reg".
+    ; "base + offset" into register "reg"
+    
+    PRINTF64 `int_x: %d\n\0`, qword [sample_obj + int_x]
+    PRINTF64 `char_y: %c\n\0`, qword [sample_obj + char_y]
+    lea rdx, [sample_obj + string_s]
+    PRINTF64 `string_s: %s\n\0`, rdx
 
     ; TODO: write the equivalent of "sample_obj->int_x = new_int".
-
+    lea rdx, [sample_obj + int_x]
+    mov dword [rdx], new_int
     ; TODO: write the equivalent of "sample_obj->char_y = new_char".
-
+    lea rdx, [sample_obj + char_y]
+    mov byte [rdx], new_char
     ; TODO: write the equivalent of "strcpy(sample_obj->string_s, new_string)".
+    mov rcx, 0
+    loop:
+        lea rdx, [sample_obj + string_s + rcx]
+        lea rax, [new_string + rcx]
+        mov byte [rdx], 
+
+        cmp rcx, 14
+        je bye
+        add rcx, 1
 
     ; TODO: print all three values again to validate the results of the
     ; three set operations above.
 
+bye:
     xor rax, rax
     leave
     ret
