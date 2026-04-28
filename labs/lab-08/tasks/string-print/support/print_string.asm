@@ -9,7 +9,7 @@ print_string:
 
     ; TODO: save the used registers and align the stack, if needed
 
-    ; TODO: print the string
+    call puts;
 
     ; TODO: restore the used registers and the stack pointer, if altered
 
