@@ -49,7 +49,7 @@ fill_byte:
     jl fill_byte
 
     ; TODO 3: Print "DEADBEEF" instead of "CAFEBABE"
-
+    mov dword [rbx + rcx], 0xDEADBEEF
     ; Text before printing buffer.
     mov rdi, buffer_intro_message
     xor eax, eax
