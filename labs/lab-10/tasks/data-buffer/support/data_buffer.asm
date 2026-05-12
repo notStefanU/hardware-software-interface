@@ -1,5 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
+; OBSERVED
 
 ; Fill buffer with data and print it.
 ; Buffer is stored in .data section (initialized data).
