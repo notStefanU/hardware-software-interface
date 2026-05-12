@@ -5,11 +5,12 @@
 ; Buffer is stored on the stack.
 
 ; TODO 1: Add missing external declaration for stdin
+extern stdin
 ; TODO 1: Change gets to fgets function.
+extern fgets
 extern printf
 extern puts
 extern strlen
-extern gets
 
 
 section .data
@@ -49,7 +50,9 @@ main:
     ; HINT: fgets takes 3 arguments: buffer address, buffer size, and stdin.
     ; IMPORTANT: remember the order of arguments that have to be pushed.
     lea rdi, [rbp - 72]         ; buffer
-    call gets
+    mov rsi, 68
+    mov rdx, [rel stdin]
+    call fgets
 
     ; Compute string length
     lea rdi, [rbp - 72]
