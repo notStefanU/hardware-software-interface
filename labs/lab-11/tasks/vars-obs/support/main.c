@@ -8,7 +8,8 @@ extern void check_result(void);
 
 int main(void)
 {
-	check_result();
-
-	return 0;
+    set(10);
+    age = 33;
+    check_result();
+    return 0;
 }
